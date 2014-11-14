@@ -1,9 +1,6 @@
 pollutantmean <- function(directory, pollutant, id = 1:332) {
 
-
-
-	
-        ## 'directory' is a character vector of length 1 indicating
+	## 'directory' is a character vector of length 1 indicating
         ## the location of the CSV files
 
         ## 'pollutant' is a character vector of length 1 indicating
@@ -29,7 +26,7 @@ pollutantmean <- function(directory, pollutant, id = 1:332) {
 		filteredNA <- currentData[!is.na(currentData[pollutant]), TRUE, drop=FALSE]
 		
 		thisMean <- mean(unlist(filteredNA[pollutant], use.names = FALSE))
-		meanVector <- c(meanVector, thisMean)
+		meanVector <- c(meanVector, unlist(filteredNA[pollutant], use.names = FALSE))
 	}
-	meanVector
+	round(mean(meanVector),3)
 }
